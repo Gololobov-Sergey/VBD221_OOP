@@ -18,21 +18,28 @@ class Student
 
 public:
 
-	
-
-	Student() : age(0), id(++num)
+	Student() : Student(0, "Noname")
 	{
-		name = new char[8];
-		strcpy(name, "No name");
+		//name = nullptr;
+		/*name = new char[8];
+		strcpy(name, "No name");*/
 		cout << "Constructor" << endl;
 		foo();
 	}
 
-	Student(int age, const char* n, int id) : age(age), id(++num)
+	Student(int age, const char* n) : age(age), id(++num)
 	{
 		this->name = new char[strlen(n) + 1];
 		strcpy(this->name, n);
 		cout << "Constructor 2 param" << endl;
+	}
+
+	Student(const Student& obj) : id(++num)
+	{
+		age = obj.age;
+		name = new char[strlen(obj.name) + 1];
+		strcpy(this->name, obj.name);
+		cout << "Constructor copy" << endl;
 	}
 
 	~Student()
@@ -42,9 +49,9 @@ public:
 		cout << "Destructor" << endl;
 	}
 
-	int getAge();
+	int getAge() const;
 
-	char* getName()
+	const char* getName() const
 	{
 		return name;
 	}
@@ -58,10 +65,12 @@ public:
 
 	void setName(const char* n)
 	{
-		strcpy(name, n);
+		delete name;
+		this->name = new char[strlen(n) + 1];
+		strcpy(this->name, n);
 	}
 
-	void print();
+	void print() const;
 
 	Student method()
 	{
@@ -83,12 +92,12 @@ public:
 int Student::num = 0;
 
 
-int Student::getAge()
+int Student::getAge() const
 {
 	return age;
 }
 
-void Student::print()
+void Student::print() const
 {
 	cout << "Name: " << name << ", Age: " << age << endl;
 }
