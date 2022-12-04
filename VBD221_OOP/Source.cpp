@@ -27,21 +27,30 @@ void PrintArray(Array a)
 int main()
 {
 
-	////// 27.11.2022 //////////
+	////// 04.12.2022 //////////
 
 	Time t(200);
+	
 
-	const Array a(-10);
-	a.set();
-	a.print();
-	PrintArray(a);
+	A a(10);
+	cout << a.getA() << endl;
+	a.method();
+
+	////// 27.11.2022 //////////
+
+	//Time t(200);
+
+	//const Array a(-10);
+	//a.set();
+	//a.print();
+	//PrintArray(a);
 
 
-	/*const*/ Student st(30, "Vasya");
-	st.print();
-	cout << st.getName() << endl;
-	st.getName();
-	cout << st.getName() << endl;
+	///*const*/ Student st(30, "Vasya");
+	//st.print();
+	//cout << st.getName() << endl;
+	//st.getName();
+	//cout << st.getName() << endl;
 
 	//st.setName("Petyaretyuio");
 	//st.print();
