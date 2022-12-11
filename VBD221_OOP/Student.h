@@ -42,11 +42,39 @@ public:
 		cout << "Constructor copy" << endl;
 	}
 
+	Student& operator=(const Student& obj)
+	{
+		if (this == &obj)
+			return *this;
+
+		age = obj.age;
+		name = new char[strlen(obj.name) + 1];
+		strcpy(this->name, obj.name);
+		return *this;
+	}
+
 	~Student()
 	{
 		num--;
 		delete name;
 		cout << "Destructor" << endl;
+	}
+
+	const char* operator[](const char* key)
+	{
+		if (strcmp(key, "name") == 0)
+			return name;
+		if (strcmp(key, "age") == 0)
+		{
+			char* buff = new char[80];
+			_itoa(age, buff, 10);
+			return buff;
+		}
+	}
+
+	int compareFromAge(Student s)
+	{
+		return (age == s.age) ? 0 : (age > s.age) ? 1 : -1;
 	}
 
 	int getAge() const;

@@ -9,12 +9,12 @@ using namespace std;
 class Array
 {
 	int* arr;
-	int size;
+	size_t size;
 
 public:
 	Array() : Array(0) { }
 
-	explicit Array(int s)
+	explicit Array(size_t s)
 	{
 		/*assert(s > 0);
 		size = s;
@@ -53,5 +53,29 @@ public:
 			cout << arr[i] << " ";
 		}
 		cout << endl;
+	}
+
+	int getElemenet(size_t index)
+	{
+		assert(index < size);
+		return arr[index];
+	}
+
+	int& operator[](int index)
+	{
+		assert(index < size);
+		return arr[index];
+	}
+
+	int& operator[](const char* key)
+	{
+		if (strcmp(key, "zero") == 0)
+			return arr[0];
+		if (strcmp(key, "one") == 0)
+			return arr[1];
+		if (strcmp(key, "two") == 0)
+			return arr[2];
+		if (strcmp(key, "tree") == 0)
+			return arr[3];
 	}
 };
