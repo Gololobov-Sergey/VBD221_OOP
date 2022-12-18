@@ -31,7 +31,45 @@ public:
 	void method(ShowTime sht);
 
 	//friend void ShowTime::show1(Time t);
+
+	Time operator++(int);
+	Time operator++();
+	Time operator+(Time t)
+	{
+		return Time();
+	}
+
+	Time operator*(int n)
+	{
+		return Time();
+	}
+	friend Time operator*(int n, Time t);
 };
+
+Time operator*(int n, Time t)
+{
+	return t * n;
+}
+
+Time Time::operator++(int)
+{
+	Time t = *this;
+
+	second++;
+
+	//set();
+
+	return t;
+}
+
+Time Time::operator++()
+{
+	second++;
+
+	//set();
+
+	return *this;
+}
 
 void Time::convert()
 {

@@ -5,22 +5,22 @@
 
 using namespace std;
 
-
+template<class T, int s = 10>
 class Array
 {
-	int* arr;
+	T* arr;
 	size_t size;
 
 public:
 	Array() : Array(0) { }
 
-	explicit Array(size_t s)
+	explicit Array(size_t s = 10)
 	{
 		/*assert(s > 0);
 		size = s;
 		arr = new int[size];*/
 		size = (s > 0) ? s : 0;
-		arr = (s > 0) ? new int[size] : nullptr;
+		arr = (s > 0) ? new T[size] : nullptr;
 	}
 
 	~Array()
@@ -31,18 +31,22 @@ public:
 	Array(const Array& obj)
 	{
 		size = obj.size;
-		arr = new int[size];
+		arr = new T[size];
 		for (size_t i = 0; i < size; i++)
 		{
 			arr[i] = obj.arr[i];
 		}
 	}
 
-	void set() const
+	void set(int min = 0, int max = 9) const
 	{
+		//if (strcmp(typeid(T).name(), "int") == 0)
+		//{
+		//	cout << typeid(T).name() << endl;
+		//}
 		for (size_t i = 0; i < size; i++)
 		{
-			arr[i] = rand() % 10;
+			arr[i] = rand() % (max - min + 1) + min;
 		}
 	}
 
@@ -55,19 +59,19 @@ public:
 		cout << endl;
 	}
 
-	int getElemenet(size_t index)
+	T getElemenet(size_t index)
 	{
 		assert(index < size);
 		return arr[index];
 	}
 
-	int& operator[](int index)
+	T& operator[](size_t index)
 	{
 		assert(index < size);
 		return arr[index];
 	}
 
-	int& operator[](const char* key)
+	T& operator[](const char* key)
 	{
 		if (strcmp(key, "zero") == 0)
 			return arr[0];
@@ -78,4 +82,45 @@ public:
 		if (strcmp(key, "tree") == 0)
 			return arr[3];
 	}
+
+	size_t length(){return size;}
+
+	void method();
+};
+
+template<class T, int s>
+void Array<T, s>::method()
+{
+
+}
+
+
+template<>
+void Array<Fraction>::set(int min, int max) const
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		arr[i] = Fraction(rand() % (max - min + 1) + min, rand() % (max - min + 1) + min);
+	}
+}
+
+
+template<>
+void Array<double>::set(int min, int max) const
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		double d = 1.0 / (rand() % 10);
+		arr[i] = rand() % (max - min + 1) + min + d;
+	}
+}
+
+template<class T, int size> // non type parametr
+class StaticArray
+{
+	T arr[size];
+
+public:
+	StaticArray() {}
+	int getSize() { return size; }
 };

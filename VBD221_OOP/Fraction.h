@@ -84,6 +84,12 @@ public:
 
 	friend ostream& operator<<(ostream& out, const Fraction& f);
 	friend istream& operator>>(istream& in, Fraction& f);
+
+	void operator()(int n, int d)
+	{
+		numerator = n;
+		deniminator = d;
+	}
 };
 
 ostream& operator<<(ostream& out, const Fraction& f)
@@ -145,6 +151,37 @@ public:
 		cout << str << endl;
 		cout << get_num();
 	}
+
+	///// TODO
+
+	friend ostream& operator<<(ostream& out, const MString& obj);
+
+	friend istream& operator>>(istream& in, MString& obj);
+
+	MString operator+(const MString& str);
+
+	void operator+=(const MString& str);
+
+	void operator*=(int n); //mama*3 = mamamamamama
+
+	MString operator*(int n); //mama*3 = mamamamamama
+
+	friend MString operator*(int n, const MString& str);
+
+	bool operator==(const MString& str);
+
+	bool operator!=(const MString& str);
+
+	bool operator>(const MString& str);
+
+	bool operator<(const MString& str);
+
+	bool operator<=(const MString& str);
+
+	bool operator>=(const MString& str);
+
+	char operator[](size_t index);
+
 };
 int MString::num(0);
 

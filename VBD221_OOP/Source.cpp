@@ -26,6 +26,17 @@ void PrintArray(MString a)
 
 int main()
 {
+
+	Array<Fraction, 20> a(10);
+	a.set();
+	a.print();
+
+	const int s = 10;
+	StaticArray<int, s> arr;
+	cout << arr.getSize() << endl;
+
+
+
 	/// 11.12.2022 //////
 
 
@@ -36,7 +47,8 @@ int main()
 	// + - * / % += -= *= /= %= 
 	// !
 	// > < == <= >= != && ||
-
+	// () []
+	// <=>
 
 	/*Array a(10);
 	a.set();
@@ -47,8 +59,12 @@ int main()
 	int w = a[5];
 	a[5] = 100;*/
 
+	/*Time t;
+	Time t2 = ++t;
+	t2 = t2 + ++t;*/
 
-	Student st(30, "Vasya");
+
+	/*Student st(30, "Vasya");
 	cout << st["name"] << endl;
 	cout << st["age"] << endl;
 	{
@@ -56,10 +72,11 @@ int main()
 		st2 = st2;
 		st2.print();
 	}
-	st.print();
+	st.print();*/
 
 	//Fraction f0(0.5);
 	//Fraction f1(1, 2);
+	//f1(2, 5);
 	//Fraction f2(1, 4);
 	////Fraction f3 = f1.sum(f2);
 	//Fraction f3 = 5 + f1;

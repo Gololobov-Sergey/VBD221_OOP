@@ -34,7 +34,7 @@ public:
 		cout << "Constructor 2 param" << endl;
 	}
 
-	Student(const Student& obj) : id(++num)
+	Student(const Student& obj) : id(obj.id)
 	{
 		age = obj.age;
 		name = new char[strlen(obj.name) + 1];
@@ -50,6 +50,7 @@ public:
 		age = obj.age;
 		name = new char[strlen(obj.name) + 1];
 		strcpy(this->name, obj.name);
+
 		return *this;
 	}
 
