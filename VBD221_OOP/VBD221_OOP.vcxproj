@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,11 +129,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Function.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
+    <ClInclude Include="DynamicStack.h" />
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="Function.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Stack.h" />
+    <ClInclude Include="StaticStack.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>

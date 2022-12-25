@@ -67,10 +67,10 @@ public:
 		*this = *this + f1;
 	}
 
-	auto operator<=>(Fraction f1)
+	/*auto operator<=>(Fraction f1)
 	{
 		return (double)numerator / deniminator <=> (double)f1.numerator / f1.deniminator;
-	}
+	}*/
 
 	bool operator&&(Fraction f1)
 	{

@@ -4,6 +4,9 @@
 #include"Fraction.h"
 #include"Array.h"
 #include"Time.h"
+#include"StaticStack.h"
+#include"Stack.h"
+#include"Function.h"
 
 using namespace std;
 
@@ -24,16 +27,81 @@ void PrintArray(MString a)
 	a.print();
 }
 
+
 int main()
 {
 
-	Array<Fraction, 20> a(10);
+	//Stack<int, 10> stack = {1,23};
+	/*int m = stack.peek();
+	cout << m << endl;*/
+	/*stack.push(10);
+	stack.push(20);
+	stack.push(30);
+	stack.push(40);
+	stack.print();
+	stack.pop();
+	stack.pop();
+	stack.print();
+	stack.clear();
+	stack.print();*/
+	
+	/*Stack<int, 10> st2(stack);
+	st2.print();*/
+	
+
+	char buff[] = "{()[(){[](})[]}()[]]{}}";
+	Stack<char, 40> s;
+	int pos = 0;
+	for (size_t i = 0; buff[i] != '\0'; i++)
+	{
+		switch (buff[i])
+		{
+		case '(': case '[': case '{': s.push(buff[i]); break;
+		}
+
+		switch (buff[i])
+		{
+		case ')': 
+			if (s.peek() == '(')
+				s.pop();
+			else
+				pos = i;
+			break;
+		case ']': 
+			if (s.peek() == '[')
+				s.pop();
+			else
+				pos = i;
+			break;
+		case '}': 
+			if (s.peek() == '{')
+				s.pop();
+			else
+				pos = i;
+			break;
+		}
+		if (pos != 0)
+			break;
+	}
+
+	cout << ((s.isEmpty()) ? "Balance" : "Not balance") << endl;
+	if (pos != 0)
+	{
+		for (size_t i = 0; i < strlen(buff); i++)
+		{
+			SetColor((i == pos) ? LightRed : LightGray, Black);
+			cout << buff[i];
+		}
+		cout << endl;
+	}
+
+	/*Array<Fraction, 20> a(10);
 	a.set();
 	a.print();
 
 	const int s = 10;
 	StaticArray<int, s> arr;
-	cout << arr.getSize() << endl;
+	cout << arr.getSize() << endl;*/
 
 
 
