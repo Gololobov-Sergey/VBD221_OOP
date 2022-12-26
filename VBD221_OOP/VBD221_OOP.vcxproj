@@ -138,6 +138,7 @@
     <ClInclude Include="Fraction.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StaticStack.h" />
     <ClInclude Include="Student.h" />

@@ -7,6 +7,7 @@
 #include"StaticStack.h"
 #include"Stack.h"
 #include"Function.h"
+#include"Queue.h"
 
 using namespace std;
 
@@ -27,9 +28,64 @@ void PrintArray(MString a)
 	a.print();
 }
 
+enum class DEPARTMENT
+{
+	DIRECTOR = 3, BUCH = 2, TRANSPORT = 1
+};
+
+ostream& operator<<(ostream& out, const DEPARTMENT& f)
+{
+	switch (f)
+	{
+	case DEPARTMENT::DIRECTOR:
+		out << "DIRECTOR"; break;
+	case DEPARTMENT::BUCH:
+		out << "BUCH"; break;
+	case DEPARTMENT::TRANSPORT:
+		out << "TRANSPORT"; break;
+
+	}return out;
+}
 
 int main()
 {
+
+	/*int i = 0;
+	while (true)
+	{
+		gotoxy(10, 10);
+		cout << ++i;
+		Sleep(1000);
+		gotoxy(10, 10);
+		cout << "    ";
+	}*/
+
+
+
+
+	PriorityQueue<int, DEPARTMENT> q;
+	q.enqueue(10, DEPARTMENT::DIRECTOR);
+	q.enqueue(20, DEPARTMENT::BUCH);
+	q.enqueue(30, DEPARTMENT::TRANSPORT);
+	q.enqueue(40, DEPARTMENT::DIRECTOR);
+	q.enqueue(50, DEPARTMENT::BUCH);
+	q.print();
+
+	/*Queue<int> q = {1,4,6};
+	q.enqueue(10);
+	q.enqueue(20);
+	q.enqueue(30);
+	q.enqueue(40);
+	q.print();
+	q.dequeue();
+	q.dequeue();
+	q.print();
+	q.enqueue(80);
+	q.enqueue(90);
+	q.ring();
+	q.ring();
+	q.print();*/
+
 
 	//Stack<int, 10> stack = {1,23};
 	/*int m = stack.peek();
@@ -48,8 +104,11 @@ int main()
 	/*Stack<int, 10> st2(stack);
 	st2.print();*/
 	
+	/*char buff[] = "3+2*3+5";
+	Calc c;
+	int res = c("3+2*3+5");*/
 
-	char buff[] = "{()[(){[](})[]}()[]]{}}";
+	/*char buff[] = "{()[(){[](})[]}()[]]{}}";
 	Stack<char, 40> s;
 	int pos = 0;
 	for (size_t i = 0; buff[i] != '\0'; i++)
@@ -93,7 +152,7 @@ int main()
 			cout << buff[i];
 		}
 		cout << endl;
-	}
+	}*/
 
 	/*Array<Fraction, 20> a(10);
 	a.set();

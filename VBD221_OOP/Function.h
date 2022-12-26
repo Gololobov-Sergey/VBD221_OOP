@@ -14,3 +14,4 @@ enum ConsoleColor
 void SetColor(int text, int background);
 
 void gotoxy(int x, int y);
+
